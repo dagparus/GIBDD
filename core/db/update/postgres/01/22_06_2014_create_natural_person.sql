@@ -10,6 +10,7 @@ create table ext_natural_person (
      NAME varchar(50),
      SURNAME varchar(70),
      PATRONYMIC varchar(60),
+     FULLNAME varchar(180),
      BIRTHDATE date,
      BIRTHPLACE varchar(200),
      SEX varchar(10),
