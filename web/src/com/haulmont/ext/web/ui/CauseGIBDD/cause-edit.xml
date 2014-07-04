@@ -289,7 +289,9 @@
                                                     </row>
                                                     <row>
                                                         <label value="msg://petition"/>
-                                                        <checkBox datasource="cardDs" property="petition"/>
+                                                        <textField datasource="cardDs"
+                                                                   property="petition"
+                                                                   width="300"/>
                                                     </row>
 
 
