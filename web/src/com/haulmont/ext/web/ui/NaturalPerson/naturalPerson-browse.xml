@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractLookup"
+        caption="msg://browserCaption"
+        lookupComponent="naturalPersonsTable">
+    <dsContext>
+        <collectionDatasource id="naturalPersonsDs"
+                              class="com.haulmont.ext.core.entity.NaturalPerson"
+                              view="browse">
+        </collectionDatasource>
+    </dsContext>
+
+    <layout spacing="true" expand="naturalPersonsTable">
+        <filter id="naturalPersonsFilter"
+                datasource="naturalPersonsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="naturalPersonsTable"
+               editable="false" width="100%" multiselect="true">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <buttonsPanel>
+                <button action="naturalPersonsTable.create"/>
+                <button action="naturalPersonsTable.edit"/>
+                <button action="naturalPersonsTable.remove"/>
+                <button action="naturalPersonsTable.excel"/>
+            </buttonsPanel>
+            <rowsCount/>
+            <columns>
+                <column id="surname"/>
+                <column id="name"/>
+                <column id="patronymic"/>
+                <column id="birthDate"/>
+                <column id="birthPlace"/>
+                <column id="sex"/>
+                <column id="residence"/>
+                <column id="domicile"/>
+                <column id="document"/>
+                <column id="telephone"/>
+            </columns>
+            <rows datasource="naturalPersonsDs"/>
+        </table>
+    </layout>
+</window>

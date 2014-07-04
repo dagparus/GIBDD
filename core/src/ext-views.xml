@@ -1,0 +1,102 @@
+<views xmlns="http://www.haulmont.com/schema/cuba/view.xsd">
+
+    <!-- Define views here, e.g.:
+
+    <view class="com.haulmont.ext.core.entity.ExtTask" name="edit" extends="_local">
+        <property name="priority" view="_minimal"/>
+        <property name="taskType" view="_minimal"/>
+        <property name="proc" view="task-edit"/>
+        <property name="roles" view="card-edit" lazy="true"/>
+        <property name="attachments" view="card-edit" lazy="true"/>
+        <property name="parentCard" view="_minimal"/>
+        <property name="taskVersions" view="task-edit"/>
+        <property name="creator" view="_minimal"/>
+        <property name="projects" view="_minimal"/>
+        <property name="executor" view="_local"/>
+        <property name="initiator" view="_local"/>
+    </view>
+    -->
+
+    <view class="com.haulmont.ext.core.entity.NaturalPerson" name="browse" extends="_local">
+        <property name="document" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.NaturalPerson" name="edit" extends="_local">
+        <property name="document" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.Policeman" name="browse" extends="_local">
+        <property name="document" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.Policeman" name="edit" extends="_local">
+        <property name="document" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.Document" name="browse" extends="_local">
+        <property name="owner" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.Document" name="edit" extends="_local">
+        <property name="owner" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.Testimony" name="browse" extends="_local">
+        <property name="witness" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.Testimony" name="edit" extends="_local">
+        <property name="witness" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.Car" name="browse" extends="_local">
+        <property name="owner" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.Car" name="edit" extends="_local">
+        <property name="owner" view="_minimal"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.CauseGIBDD" name="browse" extends="_local">
+        <property name="offender"
+                  view="_minimal"/>
+        <property name="policeman"
+                  view="_minimal"/>
+        <property name="document"
+                  view="_minimal"/>
+        <property name="car"
+                  view="_minimal"/>
+        <property name="witness"
+                  view="_minimal"/>
+        <property name="victim"
+                  view="_minimal"/>
+        <property name="testimony"
+                  view="_minimal"/>
+        <property name="article"
+                  view="_minimal"/>
+        <property name="proc"
+                  view="_local"/>
+    </view>
+
+    <view class="com.haulmont.ext.core.entity.CauseGIBDD" name="edit" extends="_local">
+        <property name="offender"
+                  view="_minimal"/>
+        <property name="policeman"
+                  view="_minimal"/>
+        <property name="document"
+                  view="_minimal"/>
+        <property name="car"
+                  view="_minimal"/>
+        <property name="witness"
+                  view="_minimal"/>
+        <property name="victim"
+                  view="_minimal"/>
+        <property name="testimony"
+                  view="_minimal"/>
+        <property name="article"
+                  view="_minimal"/>
+        <property name="proc"
+                  view="_local"/>
+    </view>
+
+</views>

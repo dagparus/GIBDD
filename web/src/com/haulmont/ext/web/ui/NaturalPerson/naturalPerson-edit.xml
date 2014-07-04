@@ -1,0 +1,101 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractEditor"
+        caption="msg://editorCaption"
+        datasource="naturalPersonsDs">
+
+    <dsContext>
+        <datasource id="naturalPersonsDs"
+                    class="com.haulmont.ext.core.entity.NaturalPerson"
+                    view="edit">
+        </datasource>
+        <collectionDatasource id="documentsDs" class="com.haulmont.ext.core.entity.Document" view="_local">
+            <query>select d from ext$Document d</query>
+        </collectionDatasource>
+    </dsContext>
+
+    <layout expand="tabsheet">
+        <tabsheet id="tabsheet">
+            <tab id="mainTab" caption="msg://mainTab">
+                <vbox margin="true">
+                    <grid margin="true" spacing="true" expandable="false" stylename="edit-area">
+                        <columns count="2"/>
+                        <rows>
+                            <row>
+                                <label value="msg://surname"/>
+                                <textField datasource="naturalPersonsDs"
+                                           property="surname"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://name"/>
+                                <textField datasource="naturalPersonsDs"
+                                           property="name"
+                                           width="300"
+                                           required="true"/>
+                            </row>
+                            <row>
+                                <label value="msg://patronymic"/>
+                                <textField datasource="naturalPersonsDs"
+                                           property="patronymic"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://birthDate"/>
+                                <dateField datasource="naturalPersonsDs"
+                                           property="birthDate"
+                                           width="200"/>
+                            </row>
+                            <row>
+                                <label value="msg://birthPlace"/>
+                                <textField datasource="naturalPersonsDs"
+                                           property="birthPlace"
+                                           width="300"
+                                           rows="2"/>
+                            </row>
+                            <row>
+                                <label value="msg://residence"/>
+                                <textField datasource="naturalPersonsDs"
+                                           property="residence"
+                                           width="300"
+                                           rows="2"/>
+                            </row>
+                            <row>
+                                <label value="msg://domicile"/>
+                                <textField datasource="naturalPersonsDs"
+                                           property="domicile"
+                                           width="300"
+                                           rows="2"/>
+                            </row>
+                            <row>
+                                <label value="msg://document"/>
+                                <lookupPickerField datasource="naturalPersonsDs"
+                                                   property="document"
+                                                   optionsDatasource="documentsDs"/>
+                            </row>
+                            <row>
+                                <label value="msg://telephone"/>
+                                <textField datasource="naturalPersonsDs"
+                                           property="telephone"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://sex"/>
+                                <optionsGroup datasource="naturalPersonsDs"
+                                          property="sex"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </vbox>
+            </tab>
+        </tabsheet>
+        <iframe id = "windowActions"
+                src = "/com/haulmont/cuba/gui/edit-window.actions.xml"/>
+    </layout>
+
+</window>

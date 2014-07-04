@@ -1,0 +1,59 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.ext.web.ui.Document.temp.DocumentBrowser"
+        caption="msg://browserCaption"
+        lookupComponent="documentsTable">
+    <dsContext>
+        <collectionDatasource id="documentsDs"
+                              class="com.haulmont.ext.core.entity.Document"
+                              view="browse">
+        </collectionDatasource>
+    </dsContext>
+
+    <layout spacing="true" expand="documentsTable">
+        <filter id="documentsFilter"
+                datasource="documentsDs">
+            <properties include=".*"/>
+        </filter>
+
+        <hbox id="verificationactsPanel" align="MIDDLE_LEFT" spacing="true" margin="true">
+            <button action="documentsTable.create" icon="icons/create.png"/>
+            <button action="documentsTable.edit" icon="icons/edit.png"/>
+            <button action="documentsTable.remove" icon="icons/remove.png"/>
+            <button action="documentsTable.excel" icon="icons/excel.png"/>
+            <button action="documentsTable.refresh" icon="icons/refresh.png"/>
+        </hbox>
+        
+        <table id="documentsTable"
+               editable="false" width="100%">
+          <!--  <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <buttonsPanel>
+                <button action="documentsTable.create"/>
+                <button action="documentsTable.edit"/>
+                <button action="documentsTable.remove"/>
+                <button action="documentsTable.excel"/>
+            </buttonsPanel>    -->
+            <rowsCount/>
+            <columns>
+                <column id="docType"/>
+                <column id="serial"/>
+                <column id="number"/>
+                <column id="whomGiveOut"/>
+                <column id="whenGiveOut"/>
+                <column id="expirationDate"/>
+                <column id="naturalPerson"/>
+            </columns>
+            <rows datasource="documentsDs"/>
+        </table>
+    </layout>
+</window>

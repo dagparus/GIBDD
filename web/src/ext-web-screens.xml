@@ -1,0 +1,31 @@
+<screen-config>
+
+    <!-- Screen aliases
+
+    <screen id="tm$Task.edit" template="/com/haulmont/ext/web/ui/task/ext-task-edit.xml"/>
+    <screen id="ext$Task.edit" template="/com/haulmont/ext/web/ui/task/ext-task-edit.xml"/>
+    -->
+    <screen id="ext$Article.browse" template="/com/haulmont/ext/web/ui/Article/article-browse.xml"/>
+    <screen id="ext$Article.lookup" template="/com/haulmont/ext/web/ui/Article/article-browse.xml"/>
+    <screen id="ext$Article.edit" template="/com/haulmont/ext/web/ui/Article/article-edit.xml"/>
+    <screen id="ext$NaturalPerson.browse" template="/com/haulmont/ext/web/ui/NaturalPerson/naturalPerson-browse.xml"/>
+    <screen id="ext$NaturalPerson.lookup" template="/com/haulmont/ext/web/ui/NaturalPerson/naturalPerson-browse.xml"/>
+    <screen id="ext$NaturalPerson.edit" template="/com/haulmont/ext/web/ui/NaturalPerson/naturalPerson-edit.xml"/>
+    <screen id="ext$Policeman.browse" template="/com/haulmont/ext/web/ui/Policeman/policeman-browse.xml"/>
+    <screen id="ext$Policeman.lookup" template="/com/haulmont/ext/web/ui/Policeman/policeman-browse.xml"/>
+    <screen id="ext$Policeman.edit" template="/com/haulmont/ext/web/ui/Policeman/policeman-edit.xml"/>
+    <screen id="ext$Document.browse" template="/com/haulmont/ext/web/ui/Document/document-browse.xml"/>
+    <screen id="ext$Document.lookup" template="/com/haulmont/ext/web/ui/Document/document-browse.xml"/>
+    <screen id="ext$Document.edit" template="/com/haulmont/ext/web/ui/Document/document-edit.xml"/>
+    <screen id="ext$Testimony.edit" template="/com/haulmont/ext/web/ui/Testimony/testimony-edit.xml"/>
+    <screen id="ext$Testimony.browse" template="/com/haulmont/ext/web/ui/Testimony/testimony-browse.xml"/>
+    <screen id="ext$Testimony.lookup" template="/com/haulmont/ext/web/ui/Testimony/testimony-browse.xml"/>
+    <screen id="ext$Car.edit" template="/com/haulmont/ext/web/ui/Car/car-edit.xml"/>
+    <screen id="ext$Car.browse" template="/com/haulmont/ext/web/ui/Car/car-browse.xml"/>
+    <screen id="ext$Car.lookup" template="/com/haulmont/ext/web/ui/Car/car-browse.xml"/>
+
+    <screen id="ext$CauseGIBDD.browse" template="/com/haulmont/ext/web/ui/CauseGIBDD/cause-browse.xml"/>
+    <screen id="ext$CauseGIBDD.edit" template="/com/haulmont/ext/web/ui/CauseGIBDD/cause-edit.xml"/>
+    <screen id="ext$CauseGIBDD.send" template="com/haulmont/ext/web/ui/CauseGIBDD/cause-send.xml"/>
+
+</screen-config>

@@ -1,0 +1,59 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractEditor"
+        caption="msg://editorCaption"
+        datasource="carsDs"
+        focusComponent="carFieldGroup">
+
+    <dsContext>
+        <datasource id="carsDs"
+                    class="com.haulmont.ext.core.entity.Car"
+                    view="edit">
+        </datasource>
+        <collectionDatasource id="naturalPersonsDs"
+                    class="com.haulmont.ext.core.entity.NaturalPerson"
+                    view="_local">
+        </collectionDatasource>
+    </dsContext>
+
+    <layout expand="windowActions">
+        <grid margin="true" spacing="true" expandable="false" stylename="edit-area">
+            <columns count="2"/>
+            <rows>
+                <row>
+                    <label value="msg://brand"/>
+                    <textField datasource="carsDs"
+                               property="brand"
+                               width="300"
+                               required="true"/>
+                </row>
+                <row>
+                    <label value="msg://model"/>
+                    <textField datasource="carsDs"
+                               property="model"
+                               width="300"
+                               required="true"/>
+                </row>
+                <row>
+                    <label value="msg://stateLicenseToken"/>
+                    <textField datasource="carsDs"
+                               property="stateLicenseToken"
+                               width="300"/>
+                </row>
+                <row>
+                    <label value="msg://owner"/>
+                    <lookupPickerField datasource="carsDs"
+                                       property="owner"
+                                       optionsDatasource="naturalPersonsDs"/>
+                </row>
+            </rows>
+        </grid>
+        <iframe id = "windowActions"
+                src = "/com/haulmont/cuba/gui/edit-window.actions.xml"/>
+    </layout>
+</window>

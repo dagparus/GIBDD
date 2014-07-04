@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractLookup"
+        caption="msg://browserCaption"
+        lookupComponent="policemansTable">
+    <dsContext>
+        <collectionDatasource id="policemansDs"
+                              class="com.haulmont.ext.core.entity.Policeman"
+                              view="browse">
+        </collectionDatasource>
+    </dsContext>
+
+    <layout spacing="true" expand="policemansTable">
+        <filter id="policemansFilter"
+                datasource="policemansDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="policemansTable"
+               editable="false" width="100%" multiselect="true">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <buttonsPanel>
+                <button action="policemansTable.create"/>
+                <button action="policemansTable.edit"/>
+                <button action="policemansTable.remove"/>
+                <button action="policemansTable.excel"/>
+            </buttonsPanel>
+            <rowsCount/>
+            <columns>
+                <column id="surname"/>
+                <column id="name"/>
+                <column id="patronymic"/>
+                <column id="post"/>
+                <column id="badgeNumber"/>
+                <column id="area"/>
+                <column id="city"/>
+                <column id="birthDate"/>
+                <column id="birthPlace"/>
+                <column id="sex"/>
+            </columns>
+            <rows datasource="policemansDs"/>
+        </table>
+    </layout>
+</window>

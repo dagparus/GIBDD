@@ -1,0 +1,8 @@
+<metadata>
+    <entityFactory>
+        <!-- Here you can substitute creation of standard entities:
+
+        <replace class="com.haulmont.taskman.core.entity.Task" with="com.haulmont.ext.core.entity.ExtTask"/>
+        -->
+    </entityFactory>
+</metadata>

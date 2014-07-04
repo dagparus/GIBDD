@@ -1,0 +1,48 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractLookup"
+        caption="msg://browserCaption"
+        lookupComponent="carsTable">
+    <dsContext>
+        <collectionDatasource id="carsDs"
+                              class="com.haulmont.ext.core.entity.Car"
+                              view="browse">
+
+        </collectionDatasource>
+    </dsContext>
+    <layout spacing="true" expand="carsTable">
+        <filter id="genericFilter"
+                datasource="carsDs">
+            <properties include = ".*"
+                        exclude = ""/>
+        </filter>
+        <table id="carsTable"
+               editable="false" width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <buttonsPanel>
+                <button action="carsTable.create"/>
+                <button action="carsTable.edit"/>
+                <button action="carsTable.remove"/>
+                <button action="carsTable.excel"/>
+            </buttonsPanel>
+            <rowsCount/>
+            <columns>
+                <column id="owner"/>
+                <column id="brand"/>
+                <column id="model"/>
+                <column id="stateLicenseToken"/>
+            </columns>
+            <rows datasource="carsDs"/>
+        </table>
+    </layout>
+</window>

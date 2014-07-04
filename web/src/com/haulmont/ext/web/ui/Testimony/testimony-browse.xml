@@ -1,0 +1,46 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractLookup"
+        caption="msg://browserCaption"
+        lookupComponent="testimonysTable">
+    <dsContext>
+        <collectionDatasource id="testimonysDs"
+                                  class="com.haulmont.ext.core.entity.Testimony"
+                                  view="browse">
+        </collectionDatasource>
+    </dsContext>
+
+    <layout spacing="true" expand="testimonysTable">
+        <filter id="testimonysFilter"
+                datasource="testimonysDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="testimonysTable"
+               editable="false" width="100%" multiselect="true">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <buttonsPanel>
+                <button action="testimonysTable.create"/>
+                <button action="testimonysTable.edit"/>
+                <button action="testimonysTable.remove"/>
+                <button action="testimonysTable.excel"/>
+            </buttonsPanel>
+            <rowsCount/>
+            <columns>
+                <column id="witness"/>
+                <column id="testimony"/>
+            </columns>
+            <rows datasource="testimonysDs"/>
+        </table>
+    </layout>
+</window>
+

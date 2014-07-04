@@ -1,0 +1,46 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractEditor"
+        caption="msg://editorCaption"
+        datasource="testimonysDs">
+
+    <dsContext>
+        <datasource id="testimonysDs"
+                    class="com.haulmont.ext.core.entity.Testimony"
+                    view="edit">
+        </datasource>
+        <collectionDatasource id="naturalPersonsDs" class="com.haulmont.ext.core.entity.NaturalPerson" view="_local">
+            <query>select np from ext$NaturalPerson np</query>
+        </collectionDatasource>
+    </dsContext>
+
+    <layout expand="windowActions">
+            <grid margin="true" spacing="true" expandable="false" stylename="edit-area">
+                <columns count="2"/>
+                <rows>
+                    <row>
+                        <label value="msg://witness"/>
+                        <lookupPickerField datasource="testimonysDs"
+                                           property="witness"
+                                           optionsDatasource="naturalPersonsDs"
+                                           width="300"
+                                           required="true"/>
+                    </row>
+                    <row>
+                        <label value="msg://testimony"/>
+                        <textField datasource="testimonysDs"
+                                   property="testimony"
+                                   width="1000px"
+                                   rows="10"/>
+                    </row>
+                </rows>
+            </grid>
+            <iframe id = "windowActions"
+                    src = "/com/haulmont/cuba/gui/edit-window.actions.xml"/>
+    </layout>
+</window>

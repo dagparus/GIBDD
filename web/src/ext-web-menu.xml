@@ -1,0 +1,23 @@
+<menu-config>
+
+    <!-- Main menu items
+
+    <menu id="ext">
+        <item id="tm$Task.edit">
+            <permissions>
+                <permission type="ENTITY_OP" target="ext$Task:create"/>
+            </permissions>
+        </item>
+    </menu>
+    -->
+    <menu id="ext">
+        <item id="ext$Article.browse"/>
+        <item id="ext$NaturalPerson.browse"/>
+        <item id="ext$Policeman.browse"/>
+        <item id="ext$Document.browse"/>
+        <item id="ext$Testimony.browse"/>
+        <item id="ext$Car.browse"/>
+        <item id="ext$CauseGIBDD.browse"/>
+    </menu>
+
+</menu-config>

@@ -1,0 +1,56 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractEditor"
+        caption="msg://editorCaption"
+        datasource="articlesDs">
+
+    <dsContext>
+        <datasource id="articlesDs"
+                    class="com.haulmont.ext.core.entity.Article"
+                    view="_local">
+        </datasource>
+    </dsContext>
+
+    <layout expand="windowActions">
+            <grid margin="true" spacing="true" expandable="false" stylename="edit-area">
+                <columns count="2"/>
+                <rows>
+                    <row>
+                        <label value="msg://number"/>
+                        <textField datasource="articlesDs"
+                                   property="number"
+                                   width="200"
+                                   required="true"/>
+                    </row>
+                    <row>
+                        <label value="msg://name"/>
+                        <textField datasource="articlesDs"
+                                   property="name"
+                                   width="600"
+                                   required="true"/>
+                    </row>
+                    <row>
+                        <label value="msg://penalty"/>
+                        <textField datasource="articlesDs"
+                                   property="penalty"
+                                   width="100"/>
+                    </row>
+                    <row>
+                        <label value="msg://template"/>
+                        <textField datasource="articlesDs"
+                                   property="template"
+                                   required="true"
+                                   width="600px"
+                                   rows="6"/>
+                    </row>
+                </rows>
+            </grid>
+            <iframe id = "windowActions"
+                    src = "/com/haulmont/cuba/gui/edit-window.actions.xml"/>
+    </layout>
+</window>

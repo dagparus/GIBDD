@@ -1,0 +1,22 @@
+create table ext_natural_person (
+     ID uuid,
+     CREATE_TS timestamp,
+     CREATED_BY varchar(50),
+     VERSION integer,
+     UPDATE_TS timestamp,
+     UPDATED_BY varchar(50),
+     DELETE_TS timestamp,
+     DELETED_BY varchar(50),
+     NAME varchar(50),
+     SURNAME varchar(70),
+     PATRONYMIC varchar(60),
+     BIRTHDATE date,
+     BIRTHPLACE varchar(200),
+     SEX varchar(10),
+     RESIDENCE varchar(200),
+     DOMICILE varchar(200),
+     TELEPHONE varchar(50),
+     TYPE varchar(2),
+     DOCUMENT_ID uuid,
+     primary key (ID)
+);

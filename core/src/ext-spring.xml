@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+    <context:component-scan base-package="com.haulmont.ext"/>
+
+    <!-- Here you can override standard bean implementations, e.g.:
+
+    <bean id="taskman_TaskWorker" class="com.haulmont.ext.core.ExtTaskWorkerBean"/>
+    -->
+
+    <!-- Define MBeans:
+
+    <bean id="ext_MBeanExporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
+        <property name="beans">
+            <map>
+                <entry key="${cuba.webContextName}:service=ExtDeployer" value-ref="ext_ExtDeployer"/>
+            </map>
+        </property>
+        <property name="assembler">
+            <bean class="org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler">
+                <property name="interfaceMappings">
+                    <map>
+                        <entry key="ext_ExtDeployer" value="com.haulmont.ext.core.ExtDeployerMBean"/>
+                    </map>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    -->
+
+</beans>

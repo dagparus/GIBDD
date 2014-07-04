@@ -1,0 +1,420 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window
+        xmlns="http://www.haulmont.com/schema/cuba/gui/window.xsd"
+        class="com.haulmont.ext.web.ui.CauseGIBDD.CauseGIBDDEditor"
+        messagesPack="com.haulmont.ext.web.ui.CauseGIBDD"
+        datasource="cardDs"
+        caption="msg://docEditor.caption"
+        >
+
+    <dsContext>
+        <datasource
+                id="cardDs"
+                class="com.haulmont.ext.core.entity.CauseGIBDD"
+                view="edit">
+            <collectionDatasource id="cardProcDs" property="procs"/>
+            <collectionDatasource id="cardRolesDs" property="roles"/>
+            <collectionDatasource id="cardProjectsDs" property="projects"/>
+        </datasource>
+
+        <hierarchicalDatasource id="attachmentsDs" class="com.haulmont.workflow.core.entity.CardAttachment"
+                                view="card-edit" hierarchyProperty="versionOf">
+            <query>select a from wf$CardAttachment a where a.card.id = :ds$cardDs order by a.createTs desc</query>
+        </hierarchicalDatasource>
+
+        <collectionDatasource id="categoryDs" class="com.haulmont.docflow.core.entity.DocCategory" view="_local">
+            <query>
+                select c from df$Category c where c.docType.id = :ds$cardDs.docKind.docType order by c.name
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="versionsDs" class="com.haulmont.docflow.core.entity.SimpleDoc" view="version">
+            <query>
+                select d from df$SimpleDoc d where d.versionOf.id = :ds$cardDs order by d.createTs
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="offenderDs" class="com.haulmont.ext.core.entity.NaturalPerson" view="_local">
+            <query>
+                select e from ext$NaturalPerson e order by e.name
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="policemanDs" class="com.haulmont.ext.core.entity.Policeman" view="_local">
+            <query>
+                select d from ext$Policeman d order by d.name
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="carDs" class="com.haulmont.ext.core.entity.Car" view="_local">
+            <query>
+                select o from ext$Car o order by o.brand
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="documentDs" class="com.haulmont.ext.core.entity.Document" view="_local">
+            <query>
+                select o from ext$Document o order by o.serial
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="witnessDs" class="com.haulmont.ext.core.entity.NaturalPerson" view="_local">
+            <query>
+                select o from ext$NaturalPerson o order by o.name
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="victimDs" class="com.haulmont.ext.core.entity.NaturalPerson" view="_local">
+            <query>
+                select o from ext$NaturalPerson o order by o.name
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="testimonyDs" class="com.haulmont.ext.core.entity.Testimony" view="_local">
+            <query>
+                select o from ext$Testimony o
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="articleDs" class="com.haulmont.ext.core.entity.Article" view="_local">
+            <query>
+                select o from ext$Article o
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="cardRelationsDs" class="com.haulmont.workflow.core.entity.CardRelation"
+                              view="card-relation">
+            <query>
+                <![CDATA[
+                select c from wf$CardRelation c where (c.card.id = :ds$cardDs or c.relatedCard.id = :ds$cardDs)
+                ]]>
+            </query>
+        </collectionDatasource>
+
+        <datasource id="docOfficeDataDs" class="com.haulmont.docflow.core.entity.DocOfficeData" view="edit">
+            <collectionDatasource id="docOfficeDataAddresseesDs" property="docOfficeDataAddressees"/>
+            <collectionDatasource id="docTransferLogsDs" property="docTransferLogs"/>
+        </datasource>
+
+        <runtimePropsDatasource id="runtimePropsDs" mainDs="cardDs"/>
+
+        <collectionDatasource id="categoriesDs" class="com.haulmont.cuba.core.entity.Category" view="_local">
+            <query>
+                select c from sys$Category c where c.entityType='ext$CauseGIBDD'
+            </query>
+        </collectionDatasource>
+
+    </dsContext>
+
+    <#assign widthWithButton = 170>
+    <#assign width = 250>
+    <layout expand="split">
+        <split id="split"
+               orientation="vertical"
+               pos="70">
+
+            <hbox id="mainPane"
+                  expand="tabsheet"
+                  spacing="true">
+                <tabsheet id="tabsheet">
+
+                    <tab id="mainTab"
+                         caption="msg://mainTab"
+                         margin="true">
+
+                        <accessControl
+                                data="com.haulmont.ext.web.ui.CauseGIBDD.CauseGIBDDAccessData"
+                                param="accessData"/>
+
+                        <groupBox stylename="edit-area">
+                            <scrollbox>
+                                <hbox spacing="true" margin="true">
+                                    <vbox spacing="true"
+                                          width="-1px"
+                                          height="-1px">
+                                        <grid id="captionInfo"
+                                              spacing="true"
+                                              align="TOP_CENTER"
+                                              margin="true;false;false;false">
+                                            <columns>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                            </columns>
+                                            <rows>
+                                                <row>
+                                                    <label id="docNumberLabel"
+                                                           value="msg://number"/>
+                                                    <label id="docNumber"
+                                                           datasource="cardDs"
+                                                           property="number"/>
+
+                                                    <label value="   |   "/>
+
+                                                    <label value="msg://state"/>
+                                                    <label id="state"
+                                                           datasource="cardDs"
+                                                           property="locState"
+                                                           stylename="bold"/>
+
+                                                    <label value="   |   "/>
+
+                                                    <label value="msg://createDate"/>
+                                                    <label id="createTs"
+                                                           datasource="cardDs"
+                                                           property="dateTime"
+                                                           dateFormat="msg://dateTimeFormat"
+                                                           stylename="bold"/>
+                                                </row>
+                                            </rows>
+                                        </grid>
+                                        <grid stylename="separator"
+                                              margin="true"
+                                              spacing="true"
+                                              expandable="false">
+                                            <columns>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                                <column flex="1"/>
+                                            </columns>
+                                            <rows>
+                                                    <row>
+                                                        <label id="docKindLabel" value="msg://docKind" visible="false"/>
+                                                        <textField id="docKind" datasource="cardDs" property="docKind"
+                                                                   width="${width}" editable="false" visible="false"/>
+                                                    </row>
+                                                    <row>
+                                                        <label value="msg://offender"/>
+                                                        <lookupPickerField id="offender"
+                                                                           datasource="cardDs"
+                                                                           property="offender"
+                                                                           optionsDatasource="offenderDs"
+                                                                           width="300"/>
+
+                                                        <label value="msg://policeman"/>
+                                                        <lookupPickerField id="policeman"
+                                                                           datasource="cardDs"
+                                                                           property="policeman"
+                                                                           optionsDatasource="policemanDs"
+                                                                           width="300"/>
+                                                    </row>
+                                                    <row>
+                                                        <label value="msg://car"/>
+                                                        <lookupPickerField id="car"
+                                                                           datasource="cardDs"
+                                                                           property="car"
+                                                                           optionsDatasource="carDs"
+                                                                           width="300"/>
+
+                                                        <label value="msg://document"/>
+                                                        <lookupPickerField id="document"
+                                                                           datasource="cardDs"
+                                                                           property="document"
+                                                                           optionsDatasource="documentDs"
+                                                                           width="300"/>
+                                                    </row>
+                                                    <row>
+                                                        <label value="msg://witness"/>
+                                                        <lookupPickerField id="witness"
+                                                                           datasource="cardDs"
+                                                                           property="witness"
+                                                                           optionsDatasource="witnessDs"
+                                                                           width="300"/>
+
+                                                        <label value="msg://victim"/>
+                                                        <lookupPickerField id="victim"
+                                                                           datasource="cardDs"
+                                                                           property="victim"
+                                                                           optionsDatasource="victimDs"
+                                                                           width="300"/>
+                                                    </row>
+                                                    <row>
+                                                        <label value="msg://testimony"/>
+                                                        <lookupPickerField id="testimony"
+                                                                           datasource="cardDs"
+                                                                           property="testimony"
+                                                                           optionsDatasource="testimonyDs"
+                                                                           width="300"/>
+
+                                                        <label value="msg://article"/>
+                                                        <lookupPickerField id="article"
+                                                                           datasource="cardDs"
+                                                                           property="article"
+                                                                           optionsDatasource="articleDs"
+                                                                           width="300"/>
+                                                    </row>
+                                                    <row>
+                                                        <label value="msg://violationDate"/>
+                                                        <dateField datasource="cardDs"
+                                                                   property="violationDate"
+                                                                   width="200"/>
+
+                                                        <label value="msg://settlingDate"/>
+                                                        <dateField datasource="cardDs"
+                                                                   property="settlingDate"
+                                                                   width="150"/>
+                                                    </row>
+                                                    <row>
+                                                        <label value="msg://violationEssence"/>
+                                                        <textField datasource="cardDs"
+                                                                   property="violationEssence"
+                                                                   width="300"/>
+
+                                                        <label value="msg://settlingPlace"/>
+                                                        <textField datasource="cardDs"
+                                                                   property="settlingPlace"
+                                                                   width="300"/>
+                                                    </row>
+                                                    <row>
+                                                        <label value="msg://serial"/>
+                                                        <textField datasource="cardDs"
+                                                                   property="serial"
+                                                                   width="300"/>
+
+                                                        <label value="msg://reviewPlace"/>
+                                                        <textField datasource="cardDs"
+                                                                   property="reviewPlace"
+                                                                   width="300"/>
+                                                    </row>
+                                                    <row>
+                                                        <label value="msg://petition"/>
+                                                        <checkBox datasource="cardDs" property="petition"/>
+                                                    </row>
+
+
+                                            </rows>
+                                            </grid>
+
+                                    </vbox>
+                                </hbox>
+                            </scrollbox>
+                        </groupBox>
+                    </tab>
+
+                    <tab id="cardProjectsTab"
+                         caption="msg://cardProjectsTab"
+                         lazy="true">
+                        <iframe id="cardProjectsFrame"
+                                src="/com/haulmont/taskman/web/ui/common/card-projects-frame.xml"/>
+                    </tab>
+
+                    <tab id="attachmentsTab"
+                         caption="msg://attachments"
+                         margin="true">
+                        <iframe
+                                id="cardAttachmentsFrame"
+                                src="/com/haulmont/taskman/web/ui/common/attachments/thesis-card-attachments-frame.xml"/>
+                    </tab>
+
+                    <tab id="processTab"
+                         caption="msg://processTab"
+                         margin="true">
+                        <iframe
+                                id="cardProcFrame"
+                                src="/com/haulmont/workflow/web/ui/base/card-proc-frame.xml"/>
+                    </tab>
+
+                     <tab id="cardCommentTab"
+                          caption="msg://cardCommentTab">
+                         <iframe id="cardCommentFrame"
+                                 src="/com/haulmont/workflow/web/ui/base/card-comment-frame.xml"/>
+                     </tab>
+
+                   <!-- <tab id="hierarchy"
+                         caption="msg://hierarchy"
+                         margin="true"
+                         lazy="true">
+                        <tabsheet id="hierarchyTabsheet">
+                            <tab id="docTreeTab" caption="msg://docTreeTab">
+                                <iframe id="cardTreeFrame"
+                                        src="/com/haulmont/taskman/web/ui/common/card-tree-frame.xml"/>
+                            </tab>
+
+                            <tab id="cardRelationsTab" caption="msg://cardRelationsTab" lazy="true">
+                                <iframe id="cardRelationsFrame"
+                                        src="/com/haulmont/taskman/web/ui/common/card-relations-frame.xml"/>
+                            </tab>
+                        </tabsheet>
+                    </tab> -->
+
+                    <tab id="history" caption="msg://history" margin="true" lazy="true">
+                        <tabsheet id="historyTabsheet">
+                            <tab id="docLogTab" caption="msg://docLogTab">
+                                <iframe id="docLogFrame" src="/com/haulmont/taskman/web/ui/task/task-log-frame.xml"/>
+                            </tab>
+
+                            <tab id="versionsTab" caption="msg://versionsTab" margin="true" lazy="true">
+                                <table id="versionsTable" editable="false" sortable="true">
+                                    <columns>
+                                        <column id="createTs" caption="msg://createTs"/>
+                                        <column id="docKind" caption="msg://docKind"/>
+                                        <column id="number" caption="msg://number"/>
+                                        <column id="date" caption="msg://date"/>
+                                    </columns>
+                                    <rows datasource="versionsDs"/>
+                                </table>
+                            </tab>
+                        </tabsheet>
+                    </tab>
+
+                    <tab id="securityTab" caption="msg://securityTab" margin="true" lazy="true">
+                        <iframe id="securityFrame" src="/com/haulmont/taskman/web/ui/common/card-security-frame.xml"/>
+                    </tab>
+
+                </tabsheet>
+
+                <vbox width="-1px" margin="false;false;false;true" spacing="true" height="100%">
+                    <scrollbox>
+                        <#assign rightPanelWidth=200>
+                        <vbox width="-1px">
+                            <vbox id="actionsPane" stylename="edit-area" margin="true" width="${rightPanelWidth}">
+                                <iframe id="actionsFrame"
+                                        src="/com/haulmont/workflow/web/ui/base/action/actions-frame.xml"
+                                        width="${rightPanelWidth}"/>
+                            </vbox>
+                            <vbox id="startProc" width="${rightPanelWidth}" margin="true" stylename="edit-area"
+                                  visible="false">
+                                <vbox id="buttonStart" spacing="true">
+                                    <label value="msg://startProc"/>
+                                </vbox>
+                            </vbox>
+                            <vbox id="otherActions" width="${rightPanelWidth}" spacing="true"
+                                  margin="true;true;true;true" stylename="edit-area">
+                                <popupButton id="additionalInfo" caption="msg://additionalInfo"
+                                             width="100%"/>
+                                <accessControl data="${docflow_docAccessDataClass}" param="accessData">
+                                    <visible property="createSubDocEnabled"/>
+                                    <popupButton id="createSubDocButton" width="100%" caption="msg://actions.Create"/>
+                                </accessControl>
+                                <button id="createFromPatternButton" caption="msg://createFromPattern"
+                                        width="100%"/>
+                                <popupButton id="print" icon="icons/print.png" caption="msg://print"
+                                             width="100%"/>
+                                <button id="createEmlButton" caption="msg://createEml"
+                                        width="100%"/>
+                            </vbox>
+                        </vbox>
+                    </scrollbox>
+                </vbox>
+            </hbox>
+
+            <vbox id="resolutionsPane" expand="resolutionsFrame" height="250px" spacing="true">
+                <label value="msg://resolutions"/>
+                <iframe id="resolutionsFrame" src="/com/haulmont/thesis/web/ui/base/thesis-resolutions-frame.xml"/>
+            </vbox>
+
+        </split>
+
+    </layout>
+</window>

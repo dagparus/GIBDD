@@ -1,0 +1,11 @@
+<!--
+  ~ Copyright (c) 2013 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window
+        xmlns="http://schemas.haulmont.com/cuba/3.1/window.xsd"
+        extends="/com/haulmont/workflow/web/ui/base/card-send.xml"
+        class="com.haulmont.ext.web.ui.CauseGIBDD.CauseGIBDDSend"
+        />

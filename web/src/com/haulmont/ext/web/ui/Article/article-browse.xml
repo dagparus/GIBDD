@@ -1,0 +1,47 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractLookup"
+        caption="msg://browserCaption"
+        lookupComponent="articlesTable">
+    <dsContext>
+        <collectionDatasource id="articlesDs"
+                                  class="com.haulmont.ext.core.entity.Article"
+                                  view="_local">
+        </collectionDatasource>
+    </dsContext>
+
+    <layout spacing="true" expand="articlesTable">
+        <filter id="articlesFilter"
+                datasource="articlesDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="articlesTable"
+               editable="false" width="100%" multiselect="true">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <buttonsPanel>
+                <button action="articlesTable.create"/>
+                <button action="articlesTable.edit"/>
+                <button action="articlesTable.remove"/>
+                <button action="articlesTable.excel"/>
+            </buttonsPanel>
+            <rowsCount/>
+            <columns>
+                <column id="number"/>
+                <column id="name"/>
+                <column id="penalty"/>
+            </columns>
+            <rows datasource="articlesDs"/>
+        </table>
+    </layout>
+</window>
+

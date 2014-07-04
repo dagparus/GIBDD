@@ -1,0 +1,79 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.ext.web.ui.Document.DocumentEditor"
+        caption="msg://editorCaption"
+        datasource="documentsDs">
+
+    <dsContext>
+        <datasource id="documentsDs"
+                    class="com.haulmont.ext.core.entity.Document"
+                    view="edit">
+        </datasource>
+        <collectionDatasource id="naturalPersonsDs" class="com.haulmont.ext.core.entity.NaturalPerson" view="_local">
+            <query>select np from ext$NaturalPerson np</query>
+        </collectionDatasource>
+    </dsContext>
+
+    <layout expand="windowActions">
+                    <grid margin="true" spacing="true" expandable="false" stylename="edit-area">
+                        <columns count="2"/>
+                        <rows>
+                            <row>
+                                <label value="msg://docType"/>
+                                <lookupField datasource="documentsDs"
+                                           property="docType"
+                                           width="300"
+                                           required="true"/>
+                            </row>
+                            <row>
+                                <label value="msg://serial"/>
+                                <textField datasource="documentsDs"
+                                           property="serial"
+                                           width="300"
+                                           required="true"/>
+                            </row>
+                            <row>
+                                <label value="msg://number"/>
+                                <textField datasource="documentsDs"
+                                           property="number"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://whomGiveOut"/>
+                                <dateField datasource="documentsDs"
+                                           property="whomGiveOut"
+                                           width="200"/>
+                            </row>
+                            <row>
+                                <label value="msg://whomGiveOut"/>
+                                <textField datasource="documentsDs"
+                                           property="whenGiveOut"
+                                           width="300"
+                                           rows="2"/>
+                            </row>
+                            <row>
+                                <label value="msg://expirationDate"/>
+                                <dateField datasource="documentsDs"
+                                           property="expirationDate"
+                                           width="300"
+                                           rows="2"/>
+                            </row>
+                            <row>
+                                <label value="msg://owner"/>
+                                <lookupPickerField id="owner"
+                                                   datasource="documentsDs"
+                                                   property="owner"
+                                                   optionsDatasource="naturalPersonsDs"/>
+                            </row>
+                        </rows>
+                    </grid>
+        <iframe id = "windowActions"
+                src = "/com/haulmont/cuba/gui/edit-window.actions.xml"/>
+    </layout>
+
+</window>

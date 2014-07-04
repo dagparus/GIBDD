@@ -1,0 +1,79 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window
+        xmlns="http://schemas.haulmont.com/cuba/3.1/window.xsd"
+        class="com.haulmont.ext.web.ui.CauseGIBDD.CauseGIBDDBrowser"
+        messagesPack="com.haulmont.ext.web.ui.CauseGIBDD"
+        caption="msg://docBrowser.caption"
+        lookupComponent="docsTable"
+        focusComponent="genericFilter"
+        >
+    <dsContext>
+    <groupDatasource id="docsDs"
+                     class="com.haulmont.ext.core.entity.CauseGIBDD"
+                     view="browse">
+        <datasourceClass>com.haulmont.docflow.web.ui.DocDatasource</datasourceClass>
+    </groupDatasource>
+    </dsContext>
+
+    <layout>
+        <vbox expand="split" spacing="true">
+            <filter id="genericFilter"
+                    datasource="docsDs">
+                <properties include=".*"
+                            exclude="template|templateName|createdBy
+                        |regNo|regDate|id|jbpmProcessId
+                        |createTs|docOfficeData|docKind
+                        |docCategory|category|locState
+                        |description|state|"/>
+            </filter>
+            <split id="split" orientation="vertical" pos="60">
+                <vbox id="table-panel" expand="docsTable" spacing="true">
+                    <groupTable id="docsTable" editable="false" presentations="true">
+                        <actions>
+                            <action id="refresh"/>
+                        </actions>
+                        <buttonsPanel id="buttonsPanel">
+                            <!-- <popupButton id="createButton" icon="icons/contract.png" caption="msg://actions.Create"
+                                         width="${100}" menuWidth="${115}"/> -->
+                            <button action="docsTable.create" icon="icons/contract.png" caption="msg://actions.Create"/>
+                            <button action="docsTable.edit" icon="icons/edit.png"/>
+                            <button action="docsTable.remove" icon="icons/remove.png"/>
+                            <button id="excel" description="msg://actions.Excel" icon="icons/excel.png"/>
+                            <button action="docsTable.refresh" icon="icons/refresh.png"/>
+                            <!--<button action="saveAsTemplate"/>
+                            <button action="docsTable.printDocs"/>-->
+                            <button action="docsTable.createDoc" visible="false"/>
+                            <!--<button action="docsTable.expandCollapseTrigger" icon="icons/expand.png" id="expandCollapseTrigger"/>-->
+                            <popupButton id="printButton" icon="icons/print.png"/>
+                            <checkBox id="hideResolutions" caption="msg://hideResolutions" align="MIDDLE_CENTER"/>
+                        </buttonsPanel>
+                        <rowsCount/>
+                        <columns>
+                            <column id="serial"/>
+                            <column id="locState"/>
+                            <column id="comment"/>
+                            <column id="hasAttachments"/>
+                        </columns>
+                        <rows datasource="docsDs"/>
+                    </groupTable>
+                </vbox>
+
+                <tabsheet id="tabsheet">
+                    <tab id="resolutionsTab" caption="msg://resolutions" margin="true">
+                        <iframe id="resolutionsFrame" src="/com/haulmont/thesis/web/ui/base/thesis-resolutions-frame.xml"/>
+                    </tab>
+                    <tab id="hierarchyTab" caption="msg://hierarchy" margin="true">
+                        <iframe id="cardTreeFrame" src="/com/haulmont/taskman/web/ui/common/card-tree-frame.xml"/>
+                    </tab>
+                </tabsheet>
+
+                </split>
+            </vbox>
+    </layout>
+
+</window>

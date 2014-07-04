@@ -1,0 +1,22 @@
+<fts-config>
+
+    <entities>
+
+        <!-- Define entities for full-text search:
+
+        <entity class="com.haulmont.ext.core.entity.ExtTask">
+            <include re=".*"/>
+            <include name="attachments.file"/>
+            <include name="assignments.attachments.file"/>
+
+            <exclude name="jbpmProcessId"/>
+            <exclude name="parentCard"/>
+            <exclude name="subCards"/>
+
+            <exclude name="timeUnit"/>
+        </entity>
+        -->
+
+    </entities>
+
+</fts-config>

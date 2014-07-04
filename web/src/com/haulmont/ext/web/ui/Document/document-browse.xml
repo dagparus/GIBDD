@@ -1,0 +1,50 @@
+<!--
+  ~ Copyright (c) 2014 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractLookup"
+        caption="msg://browserCaption"
+        lookupComponent="documentsTable">
+    <dsContext>
+        <collectionDatasource id="documentsDs"
+                              class="com.haulmont.ext.core.entity.Document"
+                              view="browse">
+        </collectionDatasource>
+    </dsContext>
+
+    <layout spacing="true" expand="documentsTable">
+        <filter id="documentsFilter"
+                datasource="documentsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="documentsTable"
+               editable="false" width="100%" multiselect="true">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <buttonsPanel>
+                <button action="documentsTable.create"/>
+                <button action="documentsTable.edit"/>
+                <button action="documentsTable.remove"/>
+                <button action="documentsTable.excel"/>
+            </buttonsPanel>
+            <rowsCount/>
+            <columns>
+                <column id="docType"/>
+                <column id="serial"/>
+                <column id="number"/>
+                <column id="whomGiveOut"/>
+                <column id="whenGiveOut"/>
+                <column id="expirationDate"/>
+                <column id="owner"/>
+            </columns>
+            <rows datasource="documentsDs"/>
+        </table>
+    </layout>
+</window>
