@@ -21,6 +21,13 @@
                 <columns count="2"/>
                 <rows>
                     <row>
+                        <label value="msg://part"/>
+                        <textField datasource="articlesDs"
+                                   property="part"
+                                   width="200"
+                                   required="true"/>
+                    </row>
+                    <row>
                         <label value="msg://number"/>
                         <textField datasource="articlesDs"
                                    property="number"

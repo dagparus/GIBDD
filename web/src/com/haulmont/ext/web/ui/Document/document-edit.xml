@@ -44,6 +44,12 @@
                                            width="300"/>
                             </row>
                             <row>
+                                <label value="msg://category"/>
+                                <textField datasource="documentsDs"
+                                           property="category"
+                                           width="100"/>
+                            </row>
+                            <row>
                                 <label value="msg://whomGiveOut"/>
                                 <dateField datasource="documentsDs"
                                            property="whomGiveOut"

@@ -293,8 +293,13 @@
                                                                    property="petition"
                                                                    width="300"/>
                                                     </row>
-
-
+                                                    <row>
+                                                        <label value="msg://condition"/>
+                                                        <textField datasource="cardDs"
+                                                                   property="condition"
+                                                                   width="600px"
+                                                                   rows="6"/>
+                                                    </row>
                                             </rows>
                                             </grid>
 

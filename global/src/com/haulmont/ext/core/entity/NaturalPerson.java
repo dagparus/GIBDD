@@ -33,6 +33,21 @@ public class NaturalPerson extends StandardEntity {
     @Column(name = "patronymic", length = 60)
     protected String patronymic;
 
+    @Column(name = "fullname", length = 180)
+    protected String fullname;
+
+    @Column(name = "name_of", length = 50)
+    protected String nameOf;
+
+    @Column(name = "surname_of", length = 70)
+    protected String surnameOf;
+
+    @Column(name = "patronymic_of", length = 60)
+    protected String patronymicOf;
+
+    @Column(name = "fullname_of", length = 180)
+    protected String fullnameOf;
+
     @Column(name = "birthdate")
     @Temporal(TemporalType.DATE)
     protected Date birthDate;
@@ -52,6 +67,9 @@ public class NaturalPerson extends StandardEntity {
 
     @Column(name = "telephone", length = 50)
     protected String telephone;
+
+    @Column(name = "organization", length = 200)
+    protected String organization;
 
     @Column(name = "sex")
     protected String sex = SexEnum.MALE.getId();
@@ -86,6 +104,46 @@ public class NaturalPerson extends StandardEntity {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getNameOf() {
+        return nameOf;
+    }
+
+    public void setNameOf(String nameOf) {
+        this.nameOf = nameOf;
+    }
+
+    public String getSurnameOf() {
+        return surnameOf;
+    }
+
+    public void setSurnameOf(String surnameOf) {
+        this.surnameOf = surnameOf;
+    }
+
+    public String getPatronymicOf() {
+        return patronymicOf;
+    }
+
+    public void setPatronymicOf(String patronymicOf) {
+        this.patronymicOf = patronymicOf;
+    }
+
+    public String getFullnameOf() {
+        return fullnameOf;
+    }
+
+    public void setFullnameOf(String fullnameOf) {
+        this.fullnameOf = fullnameOf;
     }
 
     public Date getBirthDate() {
@@ -134,5 +192,13 @@ public class NaturalPerson extends StandardEntity {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
     }
 }

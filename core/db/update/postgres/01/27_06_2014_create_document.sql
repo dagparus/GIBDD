@@ -10,6 +10,7 @@ create table ext_document (
     DOCTYPE varchar(30),
     SERIAL integer,
     NUMBER integer,
+    CATEGORY varchar(10),
     WHOM_GIVE_OUT varchar(100),
     WHEN_GIVE_OUT date,
     EXPIRATION_DATE date,

@@ -5,7 +5,7 @@
   -->
 
 <window xmlns="http://schemas.haulmont.com/cuba/5.0/window.xsd"
-        class="com.haulmont.cuba.gui.components.AbstractEditor"
+        class="com.haulmont.ext.web.ui.NaturalPerson.NaturalPersonEditor"
         caption="msg://editorCaption"
         datasource="naturalPersonsDs">
 
@@ -28,21 +28,31 @@
                         <rows>
                             <row>
                                 <label value="msg://surname"/>
-                                <textField datasource="naturalPersonsDs"
+                                <textField id="surname"
+                                           datasource="naturalPersonsDs"
                                            property="surname"
                                            width="300"/>
                             </row>
                             <row>
                                 <label value="msg://name"/>
-                                <textField datasource="naturalPersonsDs"
+                                <textField id="name"
+                                           datasource="naturalPersonsDs"
                                            property="name"
                                            width="300"
                                            required="true"/>
                             </row>
                             <row>
                                 <label value="msg://patronymic"/>
-                                <textField datasource="naturalPersonsDs"
+                                <textField id="patronymic"
+                                           datasource="naturalPersonsDs"
                                            property="patronymic"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://fullname"/>
+                                <textField id="fullname"
+                                           datasource="naturalPersonsDs"
+                                           property="fullname"
                                            width="300"/>
                             </row>
                             <row>
@@ -85,6 +95,13 @@
                                            width="300"/>
                             </row>
                             <row>
+                                <label value="msg://organization"/>
+                                <textField datasource="naturalPersonsDs"
+                                           property="organization"
+                                           width="500"
+                                           rows="4"/>
+                            </row>
+                            <row>
                                 <label value="msg://sex"/>
                                 <optionsGroup datasource="naturalPersonsDs"
                                           property="sex"/>
@@ -92,6 +109,50 @@
                         </rows>
                     </grid>
                 </vbox>
+            </tab>
+
+            <tab id="declension" caption="Склонение ФИО" margin="true" index="1">
+                <vbox expand="x">
+                    <grid id="grid" margin="true" spacing="true" expandable="false" stylename="edit-area">
+                        <columns>
+                            <column flex="1"/>
+                            <column flex="1"/>
+                        </columns>
+                        <rows>
+                            <row>
+                                <label value="msg://surnameOf"/>
+                                <textField id="surnameOf"
+                                           datasource="naturalPersonsDs"
+                                           property="surnameOf"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://nameOf"/>
+                                <textField id="nameOf"
+                                           datasource="naturalPersonsDs"
+                                           property="nameOf"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://patronymicOf"/>
+                                <textField id = "patronymicOf"
+                                           datasource="naturalPersonsDs"
+                                           property="patronymicOf"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://fullnameOf"/>
+                                <textField id = "fullnameOf"
+                                           datasource="naturalPersonsDs"
+                                           property="fullnameOf"
+                                           width="300"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </vbox>
+                <iframe id = "windowActions"
+                        src = "/com/haulmont/cuba/gui/edit-window.actions.xml"/>
+                <vbox id="x"/>
             </tab>
         </tabsheet>
         <iframe id = "windowActions"

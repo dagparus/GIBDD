@@ -30,7 +30,10 @@ public class Document extends StandardEntity {
     @Column(name = "number")
     private Integer number;
 
-    @Column(name = "whom_give_out")
+    @Column(name = "category", length = 10)
+    private String category;
+
+    @Column(name = "whom_give_out", length = 100)
     private String whomGiveOut;
 
     @Column(name = "when_give_out")
@@ -90,6 +93,14 @@ public class Document extends StandardEntity {
 
     public void setSerial(Integer serial) {
         this.serial = serial;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public DocumentType getDocType() {

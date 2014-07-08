@@ -21,7 +21,10 @@ import javax.persistence.Table;
 @NamePattern("%s|name")
 public class Article extends StandardEntity {
 
-    @Column(name = "number", length = 50)
+    @Column(name = "part", length = 10)
+    private String part;
+
+    @Column(name = "number", length = 10)
     private String number;
 
     @Column(name = "name", length = 100)
@@ -32,6 +35,14 @@ public class Article extends StandardEntity {
 
     @Column(name = "penalty", length = 10)
     private String penalty;
+
+    public String getPart() {
+        return part;
+    }
+
+    public void setPart(String part) {
+        this.part = part;
+    }
 
     public String getNumber() {
         return number;

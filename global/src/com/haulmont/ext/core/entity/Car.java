@@ -10,6 +10,7 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
+import java.awt.*;
 
 @Entity(name = "ext$Car")
 @Table(name = "ext_car")
@@ -57,8 +58,5 @@ public class Car extends StandardEntity{
         return owner;
     }
 
-    public void setOwner(NaturalPerson owner) {
-        this.owner = owner;
-    }
 }
 

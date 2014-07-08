@@ -22,6 +22,7 @@ create table ext_cause (
     VIOLATION_ESSENCE varchar(100),
     ARTICLE_ID uuid,
     REVIEW_PLACE varchar(100),
+    CONDITION varchar(500),
     primary key(CARD_ID)
 )^
 

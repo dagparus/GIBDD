@@ -36,6 +36,7 @@
             </buttonsPanel>
             <rowsCount/>
             <columns>
+                <column id="part"/>
                 <column id="number"/>
                 <column id="name"/>
                 <column id="penalty"/>

@@ -28,21 +28,31 @@
                         <rows>
                             <row>
                                 <label value="msg://surname"/>
-                                <textField datasource="policemansDs"
+                                <textField id="surname"
+                                           datasource="policemansDs"
                                            property="surname"
                                            width="300"/>
                             </row>
                             <row>
                                 <label value="msg://name"/>
-                                <textField datasource="policemansDs"
+                                <textField id="name"
+                                           datasource="policemansDs"
                                            property="name"
                                            width="300"
                                            required="true"/>
                             </row>
                             <row>
                                 <label value="msg://patronymic"/>
-                                <textField datasource="policemansDs"
+                                <textField id="patronymic"
+                                           datasource="policemansDs"
                                            property="patronymic"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://fullname"/>
+                                <textField id="fullname"
+                                           datasource="policemansDs"
+                                           property="fullname"
                                            width="300"/>
                             </row>
                             <row>
@@ -56,6 +66,13 @@
                                 <label value="msg://area"/>
                                 <textField datasource="policemansDs"
                                            property="area"
+                                           width="300"
+                                           required="true"/>
+                            </row>
+                            <row>
+                                <label value="msg://addressOrgan"/>
+                                <textField datasource="policemansDs"
+                                           property="addressOrgan"
                                            width="300"
                                            required="true"/>
                             </row>
@@ -119,6 +136,55 @@
                         </rows>
                     </grid>
                 </vbox>
+            </tab>
+            <tab id="declension" caption="Склонение ФИО" margin="true" index="1">
+                <vbox expand="x">
+                    <grid id="grid" margin="true" spacing="true" expandable="false" stylename="edit-area">
+                        <columns>
+                            <column flex="1"/>
+                            <column flex="1"/>
+                        </columns>
+                        <rows>
+                            <row>
+                                <label value="msg://surnameOf"/>
+                                <textField id="surnameOf"
+                                           datasource="policemansDs"
+                                           property="surnameOf"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://nameOf"/>
+                                <textField id="nameOf"
+                                           datasource="policemansDs"
+                                           property="nameOf"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://patronymicOf"/>
+                                <textField id = "patronymicOf"
+                                           datasource="policemansDs"
+                                           property="patronymicOf"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://fullnameOf"/>
+                                <textField id = "fullnameOf"
+                                           datasource="policemansDs"
+                                           property="fullnameOf"
+                                           width="300"/>
+                            </row>
+                            <row>
+                                <label value="msg://postOf"/>
+                                <textField datasource="policemansDs"
+                                           property="postOf"
+                                           width="300"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </vbox>
+                <iframe id = "windowActions"
+                        src = "/com/haulmont/cuba/gui/edit-window.actions.xml"/>
+                <vbox id="x"/>
             </tab>
         </tabsheet>
         <iframe id = "windowActions"
