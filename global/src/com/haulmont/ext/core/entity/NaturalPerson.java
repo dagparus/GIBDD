@@ -21,7 +21,7 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("NP")
-@NamePattern("%s|name")
+@NamePattern("%s|fullname")
 public class NaturalPerson extends StandardEntity {
 
     @Column(name = "name", length = 50)

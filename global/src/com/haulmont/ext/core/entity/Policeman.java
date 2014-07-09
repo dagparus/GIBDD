@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Table(name = "ext_policeman")
 @PrimaryKeyJoinColumn(name = "PERSON_ID", referencedColumnName = "ID")
 @DiscriminatorValue("PM")
-@NamePattern("%s|name")
+@NamePattern("%s|fullname")
 public class Policeman extends NaturalPerson {
 
     @Column(name = "post", length = 50)

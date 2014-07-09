@@ -150,6 +150,7 @@ create table ext_cause (
     SETTLING_PLACE varchar(100),
     VIOLATION_DATE date,
     VIOLATION_ESSENCE varchar(100),
+    VIOLATION_PLACE varchar(100),
     ARTICLE_ID uuid,
     REVIEW_PLACE varchar(100),
     CONDITION varchar(500),

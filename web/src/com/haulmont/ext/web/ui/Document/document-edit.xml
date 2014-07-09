@@ -50,15 +50,15 @@
                                            width="100"/>
                             </row>
                             <row>
-                                <label value="msg://whomGiveOut"/>
+                                <label value="msg://whenGiveOut"/>
                                 <dateField datasource="documentsDs"
-                                           property="whomGiveOut"
+                                           property="whenGiveOut"
                                            width="200"/>
                             </row>
                             <row>
                                 <label value="msg://whomGiveOut"/>
                                 <textField datasource="documentsDs"
-                                           property="whenGiveOut"
+                                           property="whomGiveOut"
                                            width="300"
                                            rows="2"/>
                             </row>
@@ -66,7 +66,7 @@
                                 <label value="msg://expirationDate"/>
                                 <dateField datasource="documentsDs"
                                            property="expirationDate"
-                                           width="300"
+                                           width="200"
                                            rows="2"/>
                             </row>
                             <row>

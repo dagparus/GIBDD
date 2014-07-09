@@ -81,6 +81,9 @@ public class CauseGIBDD extends Doc {
     @Column(name = "CONDITION")
     protected String condition;
 
+    @Column(name = "VIOLATION_PLACE")
+    protected String violationPlace;
+
     public NaturalPerson getOffender() {
         return offender;
     }
@@ -207,5 +210,13 @@ public class CauseGIBDD extends Doc {
 
     public void setCondition(String condition) {
         this.condition = condition;
+    }
+
+    public String getViolationPlace() {
+        return violationPlace;
+    }
+
+    public void setViolationPlace(String violationPlace) {
+        this.violationPlace = violationPlace;
     }
 }
