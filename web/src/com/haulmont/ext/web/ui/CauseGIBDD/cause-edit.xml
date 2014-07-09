@@ -277,9 +277,9 @@
                                                                    width="300"/>
                                                     </row>
                                                     <row>
-                                                        <label value="msg://serial"/>
+                                                        <label value="msg://violationPlace"/>
                                                         <textField datasource="cardDs"
-                                                                   property="serial"
+                                                                   property="violationPlace"
                                                                    width="300"/>
 
                                                         <label value="msg://reviewPlace"/>
@@ -288,8 +288,12 @@
                                                                    width="300"/>
                                                     </row>
                                                     <row>
-                                                        <label value="msg://petition"/>
+                                                        <label value="msg://serial"/>
                                                         <textField datasource="cardDs"
+                                                                   property="serial"
+                                                                   width="300"/>
+                                                        <label value="msg://petition"/>
+                                                        <checkBox datasource="cardDs"
                                                                    property="petition"
                                                                    width="300"/>
                                                     </row>
