@@ -58,5 +58,8 @@ public class Car extends StandardEntity{
         return owner;
     }
 
+    public void setOwner(NaturalPerson owner) {
+        this.owner = owner;
+    }
 }
 
