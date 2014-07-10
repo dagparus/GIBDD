@@ -302,7 +302,9 @@
                                                         <textField datasource="cardDs"
                                                                    property="condition"
                                                                    width="600px"
-                                                                   rows="6"/>
+                                                                   rows="6"
+                                                                   colspan="2"
+                                                                   resizable="true"/>
                                                     </row>
                                             </rows>
                                             </grid>
@@ -400,7 +402,7 @@
                                     <label value="msg://startProc"/>
                                 </vbox>
                             </vbox>
-                            <vbox id="otherActions" width="${rightPanelWidth}" spacing="true"
+                         <!--   <vbox id="otherActions" width="${rightPanelWidth}" spacing="true"
                                   margin="true;true;true;true" stylename="edit-area">
                                 <popupButton id="additionalInfo" caption="msg://additionalInfo"
                                              width="100%"/>
@@ -414,7 +416,7 @@
                                              width="100%"/>
                                 <button id="createEmlButton" caption="msg://createEml"
                                         width="100%"/>
-                            </vbox>
+                            </vbox>  -->
                         </vbox>
                     </scrollbox>
                 </vbox>
