@@ -6,7 +6,6 @@
 
 package com.haulmont.ext.web.ui.CauseGIBDD;
 
-import com.haulmont.chile.core.model.MetaClass;
 import com.haulmont.chile.core.model.MetaPropertyPath;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*;
@@ -15,7 +14,6 @@ import com.haulmont.cuba.gui.ServiceLocator;
 import com.haulmont.cuba.gui.UserSessionClient;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.*;
-import com.haulmont.cuba.gui.components.actions.CreateAction;
 import com.haulmont.cuba.gui.components.actions.RefreshAction;
 import com.haulmont.cuba.gui.data.*;
 import com.haulmont.cuba.gui.data.impl.CollectionDsListenerAdapter;
@@ -32,20 +30,13 @@ import com.haulmont.cuba.web.gui.components.WebPopupButton;
 import com.haulmont.docflow.core.app.CardService;
 import com.haulmont.docflow.core.app.NumerationService;
 import com.haulmont.docflow.core.entity.Doc;
-import com.haulmont.docflow.core.entity.DocOfficeData;
 import com.haulmont.docflow.core.entity.NumeratorType;
-import com.haulmont.docflow.core.entity.SimpleDoc;
 import com.haulmont.docflow.web.DocflowAppWindow;
-import com.haulmont.docflow.web.actions.CardLinkAction;
 import com.haulmont.docflow.web.actions.ThesisExcelAction;
-import com.haulmont.docflow.web.sys.BrowserComponentHelper;
 import com.haulmont.docflow.web.ui.common.DocCreator;
 import com.haulmont.docflow.web.ui.common.DocflowHelper;
-import com.haulmont.docflow.web.ui.common.ThesisPrintHelper;
-import com.haulmont.docflow.web.ui.doc.DocBrowser;
 import com.haulmont.ext.core.entity.CauseGIBDD;
 import com.haulmont.taskman.core.app.TaskmanService;
-import com.haulmont.taskman.web.ui.ImportantCardHelper;
 import com.haulmont.taskman.web.ui.common.CardTreeFrame;
 import com.haulmont.taskman.web.ui.common.RemoveCardNullChildAction;
 import com.haulmont.taskman.web.ui.task.ProcessMenuBuilderAction;
@@ -65,6 +56,7 @@ import java.util.*;
 /**
  * Created by mahdi on 7/1/14.
  */
+
 public class CauseGIBDDBrowser extends  AbstractLookup {
 
     @Named("docsTable.edit")

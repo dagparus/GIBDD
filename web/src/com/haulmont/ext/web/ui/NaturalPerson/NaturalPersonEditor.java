@@ -24,6 +24,7 @@ import java.util.Map;
 /**
  * Created by mahdi on 7/8/14.
  */
+
 public class NaturalPersonEditor extends AbstractEditor {
 
     protected OptionsGroup sexField;

@@ -76,6 +76,12 @@
                   view="_minimal"/>
         <property name="proc"
                   view="_local"/>
+        <property name="procs"
+                  view="card-edit"
+                  lazy="true"/>
+        <property name="roles"
+                  view="card-edit"
+                  lazy="true"/>
     </view>
 
     <view class="com.haulmont.ext.core.entity.CauseGIBDD" name="edit" extends="_local">
@@ -97,6 +103,12 @@
                   view="_minimal"/>
         <property name="proc"
                   view="_local"/>
+        <property name="procs"
+                  view="card-edit"
+                  lazy="true"/>
+        <property name="roles"
+                  view="card-edit"
+                  lazy="true"/>
     </view>
 
 </views>

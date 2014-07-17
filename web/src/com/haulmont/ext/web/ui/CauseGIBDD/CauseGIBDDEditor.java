@@ -6,76 +6,36 @@
 
 package com.haulmont.ext.web.ui.CauseGIBDD;
 
-import com.google.common.base.Objects;
-import com.haulmont.chile.core.model.Instance;
-import com.haulmont.chile.core.model.MetaClass;
-import com.haulmont.cuba.core.app.*;
-import com.haulmont.cuba.core.entity.CategoryAttributeValue;
+
 import com.haulmont.cuba.core.entity.Entity;
-import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.global.*;
-import com.haulmont.cuba.core.sys.AppContext;
-import com.haulmont.cuba.core.sys.SetValueEntity;
 import com.haulmont.cuba.gui.ServiceLocator;
-import com.haulmont.cuba.gui.UserSessionClient;
 import com.haulmont.cuba.gui.WindowManager;
-import com.haulmont.cuba.gui.app.core.lookup.SimpleLookup;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.data.*;
 import com.haulmont.cuba.gui.data.impl.*;
-import com.haulmont.cuba.gui.settings.Settings;
-import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
-import com.haulmont.cuba.security.entity.User;
 import com.haulmont.cuba.web.App;
-import com.haulmont.cuba.web.controllers.ControllerUtils;
-import com.haulmont.cuba.web.filestorage.WebExportDisplay;
 import com.haulmont.cuba.web.gui.components.*;
 import com.haulmont.docflow.core.app.*;
 import com.haulmont.docflow.core.entity.*;
-import com.haulmont.docflow.core.enums.DocOfficeDocKind;
-import com.haulmont.docflow.core.process.RegistrationConstants;
 import com.haulmont.docflow.web.DocflowAppWindow;
-import com.haulmont.docflow.web.actions.CreateEmlAction;
-import com.haulmont.docflow.web.ui.base.FrameHelper;
-import com.haulmont.docflow.web.ui.common.CardAttachmentHelper;
-import com.haulmont.docflow.web.ui.common.CreateEmlHandler;
-import com.haulmont.docflow.web.ui.common.DocTypeSelector;
-import com.haulmont.docflow.web.ui.common.ThesisPrintHelper;
-import com.haulmont.docflow.web.ui.correspondencehistory.CorrespondenceHistoryFrame;
-import com.haulmont.docflow.web.ui.docoffice.DocOfficeDataFrame;
-import com.haulmont.docflow.web.ui.docoffice.DocOfficeFrame;
-import com.haulmont.docflow.web.ui.doctransferlog.DocTransferLogFrame;
-import com.haulmont.docflow.web.ui.forms.RegistrationForm;
 import com.haulmont.ext.core.entity.CauseGIBDD;
-import com.haulmont.taskman.core.app.TaskmanService;
-import com.haulmont.taskman.core.entity.AbstractCard;
-import com.haulmont.taskman.core.entity.Organization;
-import com.haulmont.taskman.web.ui.ImportantCardHelper;
 import com.haulmont.taskman.web.ui.common.*;
-import com.haulmont.taskman.web.ui.common.attachments.ThesisCardAttachmentsFrame;
-import com.haulmont.taskman.web.ui.common.cardproc.TsCardProcFrame;
-import com.haulmont.taskman.web.ui.common.links.CardLinksFrame;
-import com.haulmont.taskman.web.ui.settings.ResizeHelper;
-import com.haulmont.thesis.gui.doc.DocAccessData;
-import com.haulmont.workflow.core.app.WfUtils;
 import com.haulmont.workflow.core.entity.*;
 import com.haulmont.workflow.web.ui.base.AbstractCardEditor;
 import com.haulmont.workflow.web.ui.base.CardProcFrame;
 import com.haulmont.workflow.web.ui.base.CardRolesFrame;
 import com.haulmont.workflow.web.ui.base.action.ActionsFrame;
-import com.vaadin.ui.PopupView;
-import com.vaadin.ui.TabSheet;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
 
 import javax.inject.Inject;
 import java.util.*;
 
-import static com.haulmont.docflow.core.app.ThesisConstants.*;
-
 /**
  * Created by mahdi on 7/1/14.
  */
+
 public class CauseGIBDDEditor extends AbstractCardEditor {
 
     protected CauseGIBDDAccessData accessData;

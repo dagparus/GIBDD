@@ -6,13 +6,11 @@
 
 package com.haulmont.ext.web.ui.Document;
 
-import com.haulmont.chile.core.common.ValueListener;
 import com.haulmont.cuba.gui.components.AbstractEditor;
 import com.haulmont.cuba.gui.components.LookupPickerField;
 import com.haulmont.cuba.gui.components.Window;
 import com.haulmont.cuba.gui.data.CollectionDatasource;
 import com.haulmont.cuba.gui.data.Datasource;
-import com.haulmont.cuba.gui.data.impl.DsListenerAdapter;
 import com.haulmont.ext.core.entity.Document;
 import com.haulmont.ext.core.entity.NaturalPerson;
 
