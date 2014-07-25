@@ -16,7 +16,7 @@ import javax.persistence.*;
  */
 @Entity(name = "ext$Testimony")
 @Table(name = "ext_testimony")
-@NamePattern("%s|witness")
+@NamePattern("%s|testimony")
 public class Testimony extends StandardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)

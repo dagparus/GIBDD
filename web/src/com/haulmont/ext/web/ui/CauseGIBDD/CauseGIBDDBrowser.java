@@ -18,7 +18,9 @@ import com.haulmont.cuba.gui.components.actions.RefreshAction;
 import com.haulmont.cuba.gui.data.*;
 import com.haulmont.cuba.gui.data.impl.CollectionDsListenerAdapter;
 import com.haulmont.cuba.gui.data.impl.DsListenerAdapter;
+import com.haulmont.cuba.gui.report.ReportHelper;
 import com.haulmont.cuba.gui.settings.Settings;
+import com.haulmont.cuba.report.Report;
 import com.haulmont.cuba.security.app.UserSettingService;
 import com.haulmont.cuba.security.entity.EntityOp;
 import com.haulmont.cuba.security.entity.User;
@@ -99,6 +101,8 @@ public class CauseGIBDDBrowser extends  AbstractLookup {
     protected Tabsheet tabsheet;
 
     protected CreateAction createAction;
+
+    protected PopupButton printButton;
 
     private static final String HIDE_RESOLUTIONS = "hideResolutions";
 
@@ -286,7 +290,12 @@ public class CauseGIBDDBrowser extends  AbstractLookup {
             }
         });
 
-
+        printButton = getComponent("printButton");
+        if (printButton != null) {
+            printButton.addAction(new ActionPrint("Protocol"));
+            printButton.addAction(new ActionPrint("Resolution_inspector"));
+            printButton.addAction(new ActionPrint("Resolution_justice"));
+        }
 
         final Card exclItem = (Card) params.get("exclItem");
         if (exclItem != null) {
@@ -310,6 +319,21 @@ public class CauseGIBDDBrowser extends  AbstractLookup {
         refresh();
     }
 
+    class ActionPrint extends AbstractActionPrint {
+        ActionPrint(String id) {
+            super(id);
+        }
+
+        @Override
+        public void actionPerform(Component component) {
+            CauseGIBDD entity = docsDs.getItem();
+            Map<String, Object> entites = new HashMap<String, Object>();
+            entites.put("entity", entity);
+            Report report = loadReport(MessageProvider.getMessage(CauseGIBDD.class, reportName));
+            report = getDsContext().getDataService().reload(report, "report.edit");
+            ReportHelper.printReport(report, entites);
+        }
+    }
 
     public void putParamsByCreateNew(Map<String, Object> params) {
         params.put("justCreated", true);

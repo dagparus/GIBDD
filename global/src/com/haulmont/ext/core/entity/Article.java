@@ -27,10 +27,10 @@ public class Article extends StandardEntity {
     @Column(name = "number", length = 10)
     private String number;
 
-    @Column(name = "name", length = 100)
+    @Column(name = "name", length = 1000)
     private String name;
 
-    @Column(name = "template", length = 1000)
+    @Column(name = "template", length = 2000)
     private String template;
 
     @Column(name = "penalty", length = 10)

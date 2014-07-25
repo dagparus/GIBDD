@@ -9,8 +9,8 @@ create table ext_article (
      DELETED_BY varchar(50),
      PART varchar(10),
      NUMBER varchar(10),
-     NAME varchar(100),
-     TEMPLATE varchar(1000),
+     NAME varchar(1000),
+     TEMPLATE varchar(2000),
      PENALTY varchar(25),
      primary key (ID)
 )

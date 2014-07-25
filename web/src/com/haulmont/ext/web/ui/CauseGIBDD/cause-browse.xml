@@ -55,6 +55,10 @@
                         <rowsCount/>
                         <columns>
                             <column id="serial"/>
+                            <column id="offender"/>
+                            <column id="policeman"/>
+                            <column id="violationDate"/>
+                            <column id="violationPlace"/>
                             <column id="locState"/>
                             <column id="comment"/>
                             <column id="hasAttachments"/>
